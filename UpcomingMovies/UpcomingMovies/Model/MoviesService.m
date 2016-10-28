@@ -13,6 +13,13 @@ static NSString *const BaseURL           = @"https://api.themoviedb.org/3/";
 static NSString *const APIKey            = @"1f54bd990f1cdfb230adb312546d765d";
 static NSString *const URLUpcomingMovies = @"movie/upcoming";
 static NSString *const URLGenres         = @"genre/movie/list";
+static NSString *const URLConfiguration  = @"configuration";
+
+@interface MoviesService ()
+
+@property (copy, nonatomic) NSString *baseURLImages;
+
+@end
 
 @implementation MoviesService
 
@@ -119,6 +126,83 @@ static NSString *const URLGenres         = @"genre/movie/list";
                                           }
                                       }];
     [dataTask resume];
+}
+
+- (void)requestConfigurationWithSuccess:(ParseSuccess)sucess
+                                failure:(ParseFailure)failure
+{
+    NSString            *stringURL = [BaseURL stringByAppendingFormat:@"%@?api_key=%@", URLConfiguration, APIKey];
+    NSMutableURLRequest *request   = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:stringURL]
+                                                             cachePolicy:NSURLRequestUseProtocolCachePolicy
+                                                         timeoutInterval:10.0];
+    [request setHTTPMethod:@"GET"];
+
+    NSURLSession *session = [NSURLSession sharedSession];
+
+    __weak               __typeof(self) weakSelf = self;
+    NSURLSessionDataTask *dataTask;
+    dataTask = [session dataTaskWithRequest:request
+                          completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+                    if (error) {
+                        if (failure) {
+                            failure(error);
+                        }
+                    } else {
+                        NSError *errorJson = nil;
+                        id dataJson = [NSJSONSerialization JSONObjectWithData:data
+                                                                      options:NSJSONReadingAllowFragments
+                                                                        error:&errorJson];
+                        if (errorJson) {
+                            if (failure) {
+                                failure(errorJson);
+                            }
+                        } else {
+                            if ([dataJson isKindOfClass:[NSDictionary class]]) {
+                                __strong __typeof(weakSelf) strongSelf = weakSelf;
+                                if (strongSelf) {
+                                    strongSelf.baseURLImages = [dataJson valueForKeyPath:@"images.secure_base_url"];
+                                    if (sucess) {
+                                        sucess([NSArray new]);
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }];
+    [dataTask resume];
+}
+
+- (void)requestImageFromPath:(NSString *)imagePath
+                        size:(NSString *)size
+                     success:(ParseSuccess)sucess
+                     failure:(ParseFailure)failure
+{
+    NSString            *stringURL = [self.baseURLImages stringByAppendingFormat:@"%@/%@", size, imagePath];
+    NSMutableURLRequest *request   = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:stringURL]
+                                                             cachePolicy:NSURLRequestUseProtocolCachePolicy
+                                                         timeoutInterval:10.0];
+    [request setHTTPMethod:@"GET"];
+
+    NSURLSession *session = [NSURLSession sharedSession];
+
+    NSURLSessionDownloadTask *task;
+    task = [session downloadTaskWithRequest:request
+                          completionHandler:^(NSURL *location, NSURLResponse *response, NSError *error){
+                if (error) {
+                    if (failure) {
+                        failure(error);
+                    }
+                } else {
+                    NSLog(@"%@", location);
+                    if (sucess) {
+                        dispatch_async(dispatch_get_main_queue(), ^{
+                    sucess(@[location]);
+                });
+                    }
+                }
+            }];
+
+    [task resume];
 }
 
 @end

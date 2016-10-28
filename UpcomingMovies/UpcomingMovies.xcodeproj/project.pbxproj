@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		C12806A21DC39F8A00D0E3C7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C12806A11DC39F8A00D0E3C7 /* main.m */; };
 		C12806A51DC39F8A00D0E3C7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C12806A41DC39F8A00D0E3C7 /* AppDelegate.m */; };
-		C12806A81DC39F8A00D0E3C7 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C12806A71DC39F8A00D0E3C7 /* ViewController.m */; };
 		C12806AB1DC39F8A00D0E3C7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C12806A91DC39F8A00D0E3C7 /* Main.storyboard */; };
 		C12806AD1DC39F8A00D0E3C7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C12806AC1DC39F8A00D0E3C7 /* Assets.xcassets */; };
 		C12806B01DC39F8A00D0E3C7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C12806AE1DC39F8A00D0E3C7 /* LaunchScreen.storyboard */; };
@@ -20,6 +19,9 @@
 		C12806DC1DC3B77C00D0E3C7 /* MoviesService.m in Sources */ = {isa = PBXBuildFile; fileRef = C12806DB1DC3B77C00D0E3C7 /* MoviesService.m */; };
 		C12806DF1DC3BE7500D0E3C7 /* MoviesParser.m in Sources */ = {isa = PBXBuildFile; fileRef = C12806DE1DC3BE7500D0E3C7 /* MoviesParser.m */; };
 		C12806E21DC3CB7700D0E3C7 /* MoviesData.m in Sources */ = {isa = PBXBuildFile; fileRef = C12806E11DC3CB7700D0E3C7 /* MoviesData.m */; };
+		C12806E61DC3D87F00D0E3C7 /* TableViewCellMovie.m in Sources */ = {isa = PBXBuildFile; fileRef = C12806E51DC3D87F00D0E3C7 /* TableViewCellMovie.m */; };
+		C12806EA1DC3DA0A00D0E3C7 /* TableViewControllerUpComingMovies.m in Sources */ = {isa = PBXBuildFile; fileRef = C12806E91DC3DA0A00D0E3C7 /* TableViewControllerUpComingMovies.m */; };
+		C12806ED1DC401DD00D0E3C7 /* ViewControllerMovieDetail.m in Sources */ = {isa = PBXBuildFile; fileRef = C12806EC1DC401DD00D0E3C7 /* ViewControllerMovieDetail.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,8 +39,6 @@
 		C12806A11DC39F8A00D0E3C7 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		C12806A31DC39F8A00D0E3C7 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		C12806A41DC39F8A00D0E3C7 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		C12806A61DC39F8A00D0E3C7 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		C12806A71DC39F8A00D0E3C7 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		C12806AA1DC39F8A00D0E3C7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C12806AC1DC39F8A00D0E3C7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C12806AF1DC39F8A00D0E3C7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -58,6 +58,12 @@
 		C12806DE1DC3BE7500D0E3C7 /* MoviesParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MoviesParser.m; sourceTree = "<group>"; };
 		C12806E01DC3CB7700D0E3C7 /* MoviesData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MoviesData.h; sourceTree = "<group>"; };
 		C12806E11DC3CB7700D0E3C7 /* MoviesData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MoviesData.m; sourceTree = "<group>"; };
+		C12806E41DC3D87F00D0E3C7 /* TableViewCellMovie.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableViewCellMovie.h; sourceTree = "<group>"; };
+		C12806E51DC3D87F00D0E3C7 /* TableViewCellMovie.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableViewCellMovie.m; sourceTree = "<group>"; };
+		C12806E81DC3DA0A00D0E3C7 /* TableViewControllerUpComingMovies.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableViewControllerUpComingMovies.h; sourceTree = "<group>"; };
+		C12806E91DC3DA0A00D0E3C7 /* TableViewControllerUpComingMovies.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableViewControllerUpComingMovies.m; sourceTree = "<group>"; };
+		C12806EB1DC401DD00D0E3C7 /* ViewControllerMovieDetail.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewControllerMovieDetail.h; sourceTree = "<group>"; };
+		C12806EC1DC401DD00D0E3C7 /* ViewControllerMovieDetail.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewControllerMovieDetail.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,15 +105,13 @@
 		C128069F1DC39F8A00D0E3C7 /* UpcomingMovies */ = {
 			isa = PBXGroup;
 			children = (
+				C12806E71DC3D9EA00D0E3C7 /* Controllers */,
+				C12806E31DC3D83600D0E3C7 /* Views */,
 				C12806D31DC3B43A00D0E3C7 /* Utilities */,
 				C12806C91DC3AC8C00D0E3C7 /* Model */,
 				C12806A31DC39F8A00D0E3C7 /* AppDelegate.h */,
 				C12806A41DC39F8A00D0E3C7 /* AppDelegate.m */,
-				C12806A61DC39F8A00D0E3C7 /* ViewController.h */,
-				C12806A71DC39F8A00D0E3C7 /* ViewController.m */,
-				C12806A91DC39F8A00D0E3C7 /* Main.storyboard */,
 				C12806AC1DC39F8A00D0E3C7 /* Assets.xcassets */,
-				C12806AE1DC39F8A00D0E3C7 /* LaunchScreen.storyboard */,
 				C12806B11DC39F8A00D0E3C7 /* Info.plist */,
 				C12806A01DC39F8A00D0E3C7 /* Supporting Files */,
 			);
@@ -155,6 +159,28 @@
 				C12806D81DC3B47B00D0E3C7 /* NSDate+Additions.m */,
 			);
 			path = Utilities;
+			sourceTree = "<group>";
+		};
+		C12806E31DC3D83600D0E3C7 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				C12806A91DC39F8A00D0E3C7 /* Main.storyboard */,
+				C12806AE1DC39F8A00D0E3C7 /* LaunchScreen.storyboard */,
+				C12806E41DC3D87F00D0E3C7 /* TableViewCellMovie.h */,
+				C12806E51DC3D87F00D0E3C7 /* TableViewCellMovie.m */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		C12806E71DC3D9EA00D0E3C7 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				C12806E81DC3DA0A00D0E3C7 /* TableViewControllerUpComingMovies.h */,
+				C12806E91DC3DA0A00D0E3C7 /* TableViewControllerUpComingMovies.m */,
+				C12806EB1DC401DD00D0E3C7 /* ViewControllerMovieDetail.h */,
+				C12806EC1DC401DD00D0E3C7 /* ViewControllerMovieDetail.m */,
+			);
+			path = Controllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -260,8 +286,10 @@
 				C12806E21DC3CB7700D0E3C7 /* MoviesData.m in Sources */,
 				C12806D91DC3B47B00D0E3C7 /* NSDate+Additions.m in Sources */,
 				C12806DF1DC3BE7500D0E3C7 /* MoviesParser.m in Sources */,
-				C12806A81DC39F8A00D0E3C7 /* ViewController.m in Sources */,
+				C12806E61DC3D87F00D0E3C7 /* TableViewCellMovie.m in Sources */,
+				C12806ED1DC401DD00D0E3C7 /* ViewControllerMovieDetail.m in Sources */,
 				C12806A51DC39F8A00D0E3C7 /* AppDelegate.m in Sources */,
+				C12806EA1DC3DA0A00D0E3C7 /* TableViewControllerUpComingMovies.m in Sources */,
 				C12806CF1DC3AE4200D0E3C7 /* Genre.m in Sources */,
 				C12806CC1DC3AC8C00D0E3C7 /* Movie.m in Sources */,
 				C12806DC1DC3B77C00D0E3C7 /* MoviesService.m in Sources */,
@@ -294,6 +322,7 @@
 				C12806AA1DC39F8A00D0E3C7 /* Base */,
 			);
 			name = Main.storyboard;
+			path = ..;
 			sourceTree = "<group>";
 		};
 		C12806AE1DC39F8A00D0E3C7 /* LaunchScreen.storyboard */ = {
@@ -302,6 +331,7 @@
 				C12806AF1DC39F8A00D0E3C7 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			path = ..;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -400,6 +430,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = Cegonya.UpcomingMovies;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -414,6 +445,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = Cegonya.UpcomingMovies;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

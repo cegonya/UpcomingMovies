@@ -7,15 +7,28 @@
 //
 
 #import "MoviesData.h"
+#import "MoviesService.h"
 
 @interface MoviesData ()
 
-@property (strong, nonatomic) NSMutableArray *genres;
-@property (strong, nonatomic) NSMutableArray *movies;
+@property (strong, nonatomic) NSMutableArray      *genres;
+@property (strong, nonatomic) NSMutableArray      *movies;
+@property (strong, nonatomic) NSMutableDictionary *smallPosters;
 
 @end
 
 @implementation MoviesData
+
+- (instancetype)init
+{
+    self = [super init];
+    if (self) {
+        _genres       = [NSMutableArray new];
+        _movies       = [NSMutableArray new];
+        _smallPosters = [NSMutableDictionary new];
+    }
+    return self;
+}
 
 + (instancetype)sharedInstance
 {
@@ -56,6 +69,39 @@
 {
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"uid == %@", uid];
     return [self.movies filteredArrayUsingPredicate:predicate].lastObject;
+}
+
+- (UIImage *)getSmallPosterFromMovie:(Movie *)movie completion:(void (^)(BOOL finished))completion
+{
+    NSString *imageKey = [NSString stringWithFormat:@"%@_%@", movie.pathPoster, @"w185"];
+    if (!self.smallPosters[imageKey]) {
+        __weak __typeof(self) weakSelf = self;
+        [[MoviesService sharedInstance] requestImageFromPath:movie.pathPoster
+                                                        size:@"w185"
+                                                     success:^(NSArray *data){
+             dispatch_async(dispatch_get_global_queue(QOS_CLASS_DEFAULT, 0), ^{
+                NSError *error = nil;
+                UIImage *image = [UIImage imageWithData:[NSData dataWithContentsOfURL:data.firstObject
+                                                                              options:0
+                                                                                error:&error]];
+
+                if (!error) {
+                    __strong __typeof(weakSelf) strongSelf = weakSelf;
+                    if (strongSelf) {
+                        strongSelf.smallPosters[imageKey] = image;
+                        if (completion) {
+                            dispatch_async(dispatch_get_main_queue(), ^{
+                                completion(1);
+                            });
+                        }
+                    }
+                }
+            });
+         }
+                                                     failure:^(NSError *error){
+         }];
+    }
+    return self.smallPosters[imageKey];
 }
 
 @end

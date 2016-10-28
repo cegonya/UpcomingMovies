@@ -1,5 +1,5 @@
 //
-//  ViewController.h
+//  ViewControllerMovieDetail.h
 //  UpcomingMovies
 //
 //  Created by Santex on 10/28/16.
@@ -8,8 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
-
+@interface ViewControllerMovieDetail : UIViewController
 
 @end
-

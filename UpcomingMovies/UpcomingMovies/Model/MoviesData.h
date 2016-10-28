@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 #import "Genre.h"
 #import "Movie.h"
 
@@ -19,5 +20,6 @@
 
 - (Genre *)getGenreWithId:(NSNumber *)uid;
 - (Movie *)getMovieWithId:(NSNumber *)uid;
+- (UIImage *)getSmallPosterFromMovie:(Movie *)movie completion:(void (^)(BOOL finished))completion;
 
 @end

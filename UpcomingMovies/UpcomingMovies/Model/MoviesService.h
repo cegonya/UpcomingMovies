@@ -25,4 +25,12 @@ typedef void (^ParseFailure)(NSError *error);
 - (void)requestGenresWithSuccess:(ParseSuccess)sucess
                          failure:(ParseFailure)failure;
 
+- (void)requestConfigurationWithSuccess:(ParseSuccess)sucess
+                                failure:(ParseFailure)failure;
+
+- (void)requestImageFromPath:(NSString *)imagePath
+                        size:(NSString *)size
+                     success:(ParseSuccess)sucess
+                     failure:(ParseFailure)failure;
+
 @end
