@@ -10,6 +10,7 @@
 #import <UIKit/UIKit.h>
 #import "Genre.h"
 #import "Movie.h"
+#import "NSDate+Additions.h"
 
 @interface MoviesData : NSObject
 
@@ -21,5 +22,6 @@
 - (Genre *)getGenreWithId:(NSNumber *)uid;
 - (Movie *)getMovieWithId:(NSNumber *)uid;
 - (UIImage *)getSmallPosterFromMovie:(Movie *)movie completion:(void (^)(BOOL finished))completion;
+- (UIImage *)getLargePosterFromMovie:(Movie *)movie completion:(void (^)(BOOL finished))completion;
 
 @end

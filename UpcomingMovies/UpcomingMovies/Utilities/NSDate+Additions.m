@@ -37,7 +37,7 @@
     time_t rawtime = [self timeIntervalSince1970] - [[NSTimeZone localTimeZone] secondsFromGMT];
     timeinfo = localtime(&rawtime);
     
-    strftime(buffer, 80, "%Y-%m-%dT%H:%M:%S%z", timeinfo);
+    strftime(buffer, 80, "%Y-%m-%d", timeinfo);
     
     return [NSString stringWithCString:buffer encoding:NSUTF8StringEncoding];
 }

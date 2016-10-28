@@ -13,7 +13,7 @@
 
 @property (strong, nonatomic) NSMutableArray      *genres;
 @property (strong, nonatomic) NSMutableArray      *movies;
-@property (strong, nonatomic) NSMutableDictionary *smallPosters;
+@property (strong, nonatomic) NSMutableDictionary *posters;
 
 @end
 
@@ -23,12 +23,14 @@
 {
     self = [super init];
     if (self) {
-        _genres       = [NSMutableArray new];
-        _movies       = [NSMutableArray new];
-        _smallPosters = [NSMutableDictionary new];
+        _genres  = [NSMutableArray new];
+        _movies  = [NSMutableArray new];
+        _posters = [NSMutableDictionary new];
     }
     return self;
 }
+
+#pragma mark - Public
 
 + (instancetype)sharedInstance
 {
@@ -73,11 +75,27 @@
 
 - (UIImage *)getSmallPosterFromMovie:(Movie *)movie completion:(void (^)(BOOL finished))completion
 {
-    NSString *imageKey = [NSString stringWithFormat:@"%@_%@", movie.pathPoster, @"w185"];
-    if (!self.smallPosters[imageKey]) {
+    return [self getImageFromMovie:movie size:@"w185" completion:completion];
+}
+
+- (UIImage *)getLargePosterFromMovie:(Movie *)movie completion:(void (^)(BOOL finished))completion
+{
+    return [self getImageFromMovie:movie size:@"w780" completion:completion];
+}
+
+#pragma mark - Private
+
+- (UIImage *)getImageFromMovie:(Movie *)movie size:(NSString *)size completion:(void (^)(BOOL finished))completion
+{
+    //NSString *imagePath = movie.pathPoster ? movie.pathPoster : movie.pathBackDrop;
+//    if (!movie.pathPoster) {
+//        NSLog(@"%@",movie.pathBackDrop);
+//    }
+    NSString *imageKey = [NSString stringWithFormat:@"%@_%@", movie.pathPoster, size];
+    if (!self.posters[imageKey]) {
         __weak __typeof(self) weakSelf = self;
         [[MoviesService sharedInstance] requestImageFromPath:movie.pathPoster
-                                                        size:@"w185"
+                                                        size:size
                                                      success:^(NSArray *data){
              dispatch_async(dispatch_get_global_queue(QOS_CLASS_DEFAULT, 0), ^{
                 NSError *error = nil;
@@ -88,7 +106,7 @@
                 if (!error) {
                     __strong __typeof(weakSelf) strongSelf = weakSelf;
                     if (strongSelf) {
-                        strongSelf.smallPosters[imageKey] = image;
+                        strongSelf.posters[imageKey] = image;
                         if (completion) {
                             dispatch_async(dispatch_get_main_queue(), ^{
                                 completion(1);
@@ -101,7 +119,7 @@
                                                      failure:^(NSError *error){
          }];
     }
-    return self.smallPosters[imageKey];
+    return self.posters[imageKey];
 }
 
 @end

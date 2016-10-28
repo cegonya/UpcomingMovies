@@ -10,7 +10,7 @@
 #import "MoviesService.h"
 #import "MoviesData.h"
 #import "TableViewCellMovie.h"
-#import "NSDate+Additions.h"
+#import "ViewControllerMovieDetail.h"
 
 @interface TableViewControllerUpComingMovies ()
 
@@ -140,9 +140,10 @@
 {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
-    if ([segue.identifier isEqualToString:@"segueMovieDetail"])
-    {
-                
+    if ([segue.identifier isEqualToString:@"segueMovieDetail"]) {
+        ViewControllerMovieDetail *vc        = segue.destinationViewController;
+        NSIndexPath               *indexPath = self.tableView.indexPathForSelectedRow;
+        vc.movie = self.movies[indexPath.row];
     }
 }
 
