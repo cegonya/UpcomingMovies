@@ -10,7 +10,6 @@
 #import <UIKit/UIKit.h>
 #import "Genre.h"
 #import "Movie.h"
-#import "NSDate+Additions.h"
 
 @interface MoviesData : NSObject
 

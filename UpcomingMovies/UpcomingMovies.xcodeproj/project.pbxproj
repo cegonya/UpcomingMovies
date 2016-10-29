@@ -104,7 +104,6 @@
 			children = (
 				C12806E71DC3D9EA00D0E3C7 /* Controllers */,
 				C12806E31DC3D83600D0E3C7 /* Views */,
-				C12806D31DC3B43A00D0E3C7 /* Utilities */,
 				C12806C91DC3AC8C00D0E3C7 /* Model */,
 				C12806A31DC39F8A00D0E3C7 /* AppDelegate.h */,
 				C12806A41DC39F8A00D0E3C7 /* AppDelegate.m */,
@@ -147,13 +146,6 @@
 				C12806E11DC3CB7700D0E3C7 /* MoviesData.m */,
 			);
 			path = Model;
-			sourceTree = "<group>";
-		};
-		C12806D31DC3B43A00D0E3C7 /* Utilities */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Utilities;
 			sourceTree = "<group>";
 		};
 		C12806E31DC3D83600D0E3C7 /* Views */ = {
