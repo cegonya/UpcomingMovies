@@ -99,10 +99,6 @@
 
 - (UIImage *)getImageFromMovie:(Movie *)movie size:(NSString *)size completion:(void (^)(BOOL finished))completion
 {
-    //NSString *imagePath = movie.pathPoster ? movie.pathPoster : movie.pathBackDrop;
-//    if (!movie.pathPoster) {
-//        NSLog(@"%@",movie.pathBackDrop);
-//    }
     NSString *imageKey = [NSString stringWithFormat:@"%@_%@", movie.pathPoster, size];
     if (!self.posters[imageKey]) {
         __weak __typeof(self) weakSelf = self;
