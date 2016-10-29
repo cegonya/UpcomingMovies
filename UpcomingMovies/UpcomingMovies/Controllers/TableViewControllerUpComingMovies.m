@@ -95,7 +95,7 @@
     Movie *movie = self.movies[indexPath.row];
 
     cell.title.text       = movie.title;
-    cell.releaseDate.text = [movie.releaseDate ISO8601String];
+    cell.releaseDate.text = movie.releaseDate;
     cell.imageView.tag    = indexPath.row;
     UIImage *image = [[MoviesData sharedInstance] getSmallPosterFromMovie:movie
                                                                completion:^(BOOL finished){

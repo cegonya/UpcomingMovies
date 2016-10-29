@@ -13,8 +13,8 @@
 @property (nonatomic, readonly) NSNumber *uid;
 @property (nonatomic, readonly) NSString *title;
 @property (nonatomic, readonly) NSString *overview;
-@property (nonatomic, readonly) NSDate *releaseDate;
-@property (nonatomic, readonly) NSArray *genres;
+@property (nonatomic, readonly) NSString *releaseDate;
+@property (nonatomic, readonly) NSArray  *genres;
 @property (nonatomic, readonly) NSString *pathPoster;
 @property (nonatomic, readonly) NSString *pathBackDrop;
 

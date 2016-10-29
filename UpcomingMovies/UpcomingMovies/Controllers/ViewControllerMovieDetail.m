@@ -47,7 +47,7 @@
 {
     self.title            = self.movie.title;
     self.overview.text    = self.movie.overview;
-    self.releaseDate.text = [self.movie.releaseDate ISO8601String];
+    self.releaseDate.text = self.movie.releaseDate;
 
     __weak __typeof(self) weakSelf = self;
     self.poster.image = [[MoviesData sharedInstance] getLargePosterFromMovie:self.movie

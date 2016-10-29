@@ -15,7 +15,6 @@
 		C12806BB1DC39F8A00D0E3C7 /* UpcomingMoviesTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C12806BA1DC39F8A00D0E3C7 /* UpcomingMoviesTests.m */; };
 		C12806CC1DC3AC8C00D0E3C7 /* Movie.m in Sources */ = {isa = PBXBuildFile; fileRef = C12806CB1DC3AC8C00D0E3C7 /* Movie.m */; };
 		C12806CF1DC3AE4200D0E3C7 /* Genre.m in Sources */ = {isa = PBXBuildFile; fileRef = C12806CE1DC3AE4200D0E3C7 /* Genre.m */; };
-		C12806D91DC3B47B00D0E3C7 /* NSDate+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = C12806D81DC3B47B00D0E3C7 /* NSDate+Additions.m */; };
 		C12806DC1DC3B77C00D0E3C7 /* MoviesService.m in Sources */ = {isa = PBXBuildFile; fileRef = C12806DB1DC3B77C00D0E3C7 /* MoviesService.m */; };
 		C12806DF1DC3BE7500D0E3C7 /* MoviesParser.m in Sources */ = {isa = PBXBuildFile; fileRef = C12806DE1DC3BE7500D0E3C7 /* MoviesParser.m */; };
 		C12806E21DC3CB7700D0E3C7 /* MoviesData.m in Sources */ = {isa = PBXBuildFile; fileRef = C12806E11DC3CB7700D0E3C7 /* MoviesData.m */; };
@@ -50,8 +49,6 @@
 		C12806CB1DC3AC8C00D0E3C7 /* Movie.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Movie.m; sourceTree = "<group>"; };
 		C12806CD1DC3AE4200D0E3C7 /* Genre.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Genre.h; sourceTree = "<group>"; };
 		C12806CE1DC3AE4200D0E3C7 /* Genre.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Genre.m; sourceTree = "<group>"; };
-		C12806D71DC3B47B00D0E3C7 /* NSDate+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+Additions.h"; sourceTree = "<group>"; };
-		C12806D81DC3B47B00D0E3C7 /* NSDate+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+Additions.m"; sourceTree = "<group>"; };
 		C12806DA1DC3B77C00D0E3C7 /* MoviesService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MoviesService.h; sourceTree = "<group>"; };
 		C12806DB1DC3B77C00D0E3C7 /* MoviesService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MoviesService.m; sourceTree = "<group>"; };
 		C12806DD1DC3BE7500D0E3C7 /* MoviesParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MoviesParser.h; sourceTree = "<group>"; };
@@ -155,8 +152,6 @@
 		C12806D31DC3B43A00D0E3C7 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
-				C12806D71DC3B47B00D0E3C7 /* NSDate+Additions.h */,
-				C12806D81DC3B47B00D0E3C7 /* NSDate+Additions.m */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -284,7 +279,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				C12806E21DC3CB7700D0E3C7 /* MoviesData.m in Sources */,
-				C12806D91DC3B47B00D0E3C7 /* NSDate+Additions.m in Sources */,
 				C12806DF1DC3BE7500D0E3C7 /* MoviesParser.m in Sources */,
 				C12806E61DC3D87F00D0E3C7 /* TableViewCellMovie.m in Sources */,
 				C12806ED1DC401DD00D0E3C7 /* ViewControllerMovieDetail.m in Sources */,
@@ -492,6 +486,7 @@
 				C12806C11DC39F8A00D0E3C7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		C12806C21DC39F8A00D0E3C7 /* Build configuration list for PBXNativeTarget "UpcomingMoviesTests" */ = {
 			isa = XCConfigurationList;
@@ -500,6 +495,7 @@
 				C12806C41DC39F8A00D0E3C7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
