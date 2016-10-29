@@ -59,20 +59,50 @@
 
 - (void)requestMovies
 {
+    __weak __typeof(self) weakSelf = self;
     [[MoviesService sharedInstance] requestGenresWithSuccess:^(NSArray *data){
          [[MoviesService sharedInstance] requestConfigurationWithSuccess:^(NSArray *data){
               [[MoviesService sharedInstance] requestUpcomingMoviesWithSuccess:^(NSArray *data){
-                   [self.movies addObjectsFromArray:data];
-                   [self.tableView reloadData];
+                   __strong __typeof(weakSelf) strongSelf = weakSelf;
+                   if (strongSelf) {
+                       [strongSelf.movies addObjectsFromArray:data];
+                       [strongSelf.tableView reloadData];
+                   }
                }
                                                                        failure:^(NSError *error){
+                   __strong __typeof(weakSelf) strongSelf = weakSelf;
+                   if (strongSelf) {
+                       [strongSelf showErrorAlert];
+                   }
                }];
           }
                                                                  failure:^(NSError *error){
+              __strong __typeof(weakSelf) strongSelf = weakSelf;
+              if (strongSelf) {
+                  [strongSelf showErrorAlert];
+              }
           }];
      }
                                                      failure:^(NSError *error){
+         __strong __typeof(weakSelf) strongSelf = weakSelf;
+         if (strongSelf) {
+             [strongSelf showErrorAlert];
+         }
      }];
+}
+
+- (void)showErrorAlert
+{
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Movies"
+                                                                   message:@"There was an internal error" preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *alertAction = [UIAlertAction actionWithTitle:@"OK"
+                                                          style:UIAlertActionStyleDefault
+                                                        handler:nil];
+    [alert addAction:alertAction];
+
+    [self presentViewController:alert
+                       animated:YES
+                     completion:nil];
 }
 
 #pragma mark - Table view data source
