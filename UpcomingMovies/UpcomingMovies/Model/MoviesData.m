@@ -83,6 +83,18 @@
     return [self getImageFromMovie:movie size:@"w780" completion:completion];
 }
 
+- (NSString *)getGenresString:(NSArray *)genres
+{
+    NSMutableArray *genresNames  = [NSMutableArray new];
+    for (int i = 0; i < genres.count; i++) {
+        Genre *genre = [[MoviesData sharedInstance] getGenreWithId:genres[i]];
+        if (genre) {
+            [genresNames addObject:genre.name];
+        }
+    }
+    return [genresNames componentsJoinedByString:@", "];
+}
+
 #pragma mark - Private
 
 - (UIImage *)getImageFromMovie:(Movie *)movie size:(NSString *)size completion:(void (^)(BOOL finished))completion

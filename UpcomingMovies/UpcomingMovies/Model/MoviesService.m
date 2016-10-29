@@ -57,7 +57,9 @@ static NSString *const URLConfiguration  = @"configuration";
                                                 completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
                                           if (error) {
                                               if (failure) {
-                                                  failure(error);
+                                                  dispatch_async(dispatch_get_main_queue(), ^{
+                                                      failure(error);
+                                                  });
                                               }
                                           } else {
                                               NSError *errorJson = nil;
@@ -66,7 +68,9 @@ static NSString *const URLConfiguration  = @"configuration";
                                                                                               error:&errorJson];
                                               if (errorJson) {
                                                   if (failure) {
-                                                      failure(errorJson);
+                                                      dispatch_async(dispatch_get_main_queue(), ^{
+                                                          failure(errorJson);
+                                                      });
                                                   }
                                               } else {
                                                   //NSLog(@"data : %@", dataJson);
@@ -105,7 +109,9 @@ static NSString *const URLConfiguration  = @"configuration";
                                                 completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
                                           if (error) {
                                               if (failure) {
-                                                  failure(error);
+                                                  dispatch_async(dispatch_get_main_queue(), ^{
+                                                      failure(error);
+                                                  });
                                               }
                                           } else {
                                               NSError *errorJson = nil;
@@ -114,7 +120,9 @@ static NSString *const URLConfiguration  = @"configuration";
                                                                                               error:&errorJson];
                                               if (errorJson) {
                                                   if (failure) {
-                                                      failure(errorJson);
+                                                      dispatch_async(dispatch_get_main_queue(), ^{
+                                                          failure(errorJson);
+                                                      });
                                                   }
                                               } else {
                                                   //NSLog(@"data : %@", dataJson);
@@ -145,7 +153,9 @@ static NSString *const URLConfiguration  = @"configuration";
                           completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
                     if (error) {
                         if (failure) {
-                            failure(error);
+                            dispatch_async(dispatch_get_main_queue(), ^{
+                                failure(error);
+                            });
                         }
                     } else {
                         NSError *errorJson = nil;
@@ -154,7 +164,9 @@ static NSString *const URLConfiguration  = @"configuration";
                                                                         error:&errorJson];
                         if (errorJson) {
                             if (failure) {
-                                failure(errorJson);
+                                dispatch_async(dispatch_get_main_queue(), ^{
+                                    failure(errorJson);
+                                });
                             }
                         } else {
                             if ([dataJson isKindOfClass:[NSDictionary class]]) {
@@ -162,7 +174,9 @@ static NSString *const URLConfiguration  = @"configuration";
                                 if (strongSelf) {
                                     strongSelf.baseURLImages = [dataJson valueForKeyPath:@"images.secure_base_url"];
                                     if (sucess) {
-                                        sucess([NSArray new]);
+                                        dispatch_async(dispatch_get_main_queue(), ^{
+                                sucess([NSArray new]);
+                            });
                                     }
                                 }
                             }
@@ -180,7 +194,7 @@ static NSString *const URLConfiguration  = @"configuration";
     NSString            *stringURL = [self.baseURLImages stringByAppendingFormat:@"%@/%@", size, imagePath];
     NSMutableURLRequest *request   = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:stringURL]
                                                              cachePolicy:NSURLRequestUseProtocolCachePolicy
-                                                         timeoutInterval:10.0];
+                                                         timeoutInterval:60.0];
     [request setHTTPMethod:@"GET"];
 
     NSURLSession *session = [NSURLSession sharedSession];
@@ -190,10 +204,12 @@ static NSString *const URLConfiguration  = @"configuration";
                           completionHandler:^(NSURL *location, NSURLResponse *response, NSError *error){
                 if (error) {
                     if (failure) {
-                        failure(error);
+                        dispatch_async(dispatch_get_main_queue(), ^{
+                    failure(error);
+                });
                     }
                 } else {
-                    NSLog(@"%@", location);
+                    //NSLog(@"%@", location);
                     if (sucess) {
                         dispatch_async(dispatch_get_main_queue(), ^{
                     sucess(@[location]);

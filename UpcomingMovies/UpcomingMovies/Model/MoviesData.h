@@ -23,5 +23,6 @@
 - (Movie *)getMovieWithId:(NSNumber *)uid;
 - (UIImage *)getSmallPosterFromMovie:(Movie *)movie completion:(void (^)(BOOL finished))completion;
 - (UIImage *)getLargePosterFromMovie:(Movie *)movie completion:(void (^)(BOOL finished))completion;
+- (NSString *)getGenresString:(NSArray *)genres;
 
 @end

@@ -24,20 +24,7 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.title            = self.movie.title;
-    self.overview.text    = self.movie.overview;
-    self.releaseDate.text = [self.movie.releaseDate ISO8601String];
-
-    __weak __typeof(self) weakSelf = self;
-    self.poster.image = [[MoviesData sharedInstance] getLargePosterFromMovie:self.movie
-                                                                  completion:^(BOOL finished){
-                             if (finished) {
-                                 __strong __typeof(weakSelf) strongSelf = weakSelf;
-                                 if (strongSelf) {
-                                     strongSelf.poster.image = [[MoviesData sharedInstance] getLargePosterFromMovie:self.movie completion:nil];
-                                 }
-                             }
-                         }];
+    [self loadMovieData];
 }
 
 - (void)didReceiveMemoryWarning
@@ -55,5 +42,24 @@
     // Pass the selected object to the new view controller.
    }
  */
+
+- (void)loadMovieData
+{
+    self.title            = self.movie.title;
+    self.overview.text    = self.movie.overview;
+    self.releaseDate.text = [self.movie.releaseDate ISO8601String];
+
+    __weak __typeof(self) weakSelf = self;
+    self.poster.image = [[MoviesData sharedInstance] getLargePosterFromMovie:self.movie
+                                                                  completion:^(BOOL finished){
+                             if (finished) {
+                                 __strong __typeof(weakSelf) strongSelf = weakSelf;
+                                 if (strongSelf) {
+                                     strongSelf.poster.image = [[MoviesData sharedInstance] getLargePosterFromMovie:self.movie completion:nil];
+                                 }
+                             }
+                         }];
+    self.genres.text = [[MoviesData sharedInstance] getGenresString:self.movie.genres];
+}
 
 @end

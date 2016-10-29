@@ -34,29 +34,33 @@
     self.tableView.rowHeight          = UITableViewAutomaticDimension;
     self.tableView.estimatedRowHeight = 111.0f;
 
-    [[MoviesService sharedInstance] requestUpcomingMoviesWithSuccess:^(NSArray *data){
-         [self.movies addObjectsFromArray:data];
-         [self.tableView reloadData];
-     }
-                                                             failure:^(NSError *error){
-     }];
-
-    [[MoviesService sharedInstance] requestGenresWithSuccess:^(NSArray *data){
-         NSLog(@"%@", data);
-     }
-                                                     failure:^(NSError *error){
-     }];
-
-    [[MoviesService sharedInstance] requestConfigurationWithSuccess:^(NSArray *data){
-     }
-                                                            failure:^(NSError *error){
-     }];
+    [self requestMovies];
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+#pragma mark - Private
+
+- (void)requestMovies
+{
+    [[MoviesService sharedInstance] requestGenresWithSuccess:^(NSArray *data){
+         [[MoviesService sharedInstance] requestConfigurationWithSuccess:^(NSArray *data){
+              [[MoviesService sharedInstance] requestUpcomingMoviesWithSuccess:^(NSArray *data){
+                   [self.movies addObjectsFromArray:data];
+                   [self.tableView reloadData];
+               }
+                                                                       failure:^(NSError *error){
+               }];
+          }
+                                                                 failure:^(NSError *error){
+          }];
+     }
+                                                     failure:^(NSError *error){
+     }];
 }
 
 #pragma mark - Table view data source
@@ -89,12 +93,9 @@
                           }
                       }];
 
-//    cell.imageView.contentMode = UIViewContentModeCenter;
-//    if (cell.imageView.bounds.size.width > image.size.width && cell.imageView.bounds.size.height > image.size.height) {
-//        cell.imageView.contentMode = UIViewContentModeScaleAspectFit;
-//    }
-
     cell.imageView.image = image;
+    cell.genres.text     = [[MoviesData sharedInstance] getGenresString:movie.genres];
+
 
     return cell;
 }
